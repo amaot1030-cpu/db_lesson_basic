@@ -5,18 +5,6 @@ CREATE TABLE departments (
   updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE people (
- person_id INT AUTO_INCREMENT PRIMARY KEY,
- name VARCHAR(20) NOT NULL,
- email VARCHAR(255) UNIQUE,
- age INT,
- gender TINYINT COMMENT '1が男、2が女',
- created_at TIMESTAMP NULL DEFAULT NULL CURRENT_TIMESTAMP, 
- updated_at TIMESTAMP NULL DEFAULT ON UPDATE CURRENT_TIMESTAMP
- );
-
- ALTER TABLE department MODIFY DEFAULT CURRENT_TIMESTAMP;
-
  INSERT INTO departments (name) 
  VALUES 
  ('営業'),
@@ -50,45 +38,42 @@ DELETE FROM reports WHERE report_id =1;
 
 UPDATE people SET department_id = 1 WHERE person_id = 2;
 
-
-UPDATE reports SET content = '鈴木たかし3月31日,日報' WHERE 
-
-Q5
+-- Q5
 SELECT * FROM people 
 WHERE gender = 1
 ORDER BY age DESC;
 
-Q6
-SELECT
-  `name`, `email`, `age`
-  レコード
-FROM
-  `people`
-  テーブル
-WHERE
-  `department_id` = 1
-  カラム
-ORDER BY
-  `created_at`;
-  レコード
+-- -- Q6
+-- SELECT
+--   `name`, `email`, `age`
+--   カラム名name,email,ageのレコードを取得する
+-- FROM
+--   `people`
+--   peopleというテーブルから
+-- WHERE
+--   `department_id` = 1
+--   カラム名department_idが1のレコードを
+-- ORDER BY
+--   `created_at`;
+--   created_atのレコードを昇順で
 
-Q7
-SELECT * FROM people
+-- Q7
+SELECT name FROM people
  WHERE
   age BETWEEN 20 AND 29 AND gender = 2 
  OR
   age BETWEEN 40 AND 49 AND gender = 1;
 
-Q8
+-- Q8
 SELECT * FROM people 
 WHERE department_id = 1
 ORDER BY age ASC;
 
-Q9
+-- Q9
 SELECT AVG(age) AS average_age FROM people
 WHERE department_id = 2 AND gender = 2;
 
-Q10
+-- Q10
 SELECT
   people.name, people.department_id, content
 FROM
