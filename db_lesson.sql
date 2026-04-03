@@ -58,7 +58,8 @@ ORDER BY age DESC;
 --   created_atのレコードを昇順で
 
 -- Q7
-SELECT name FROM people
+SELECT name 
+FROM people
  WHERE
   age BETWEEN 20 AND 29 AND gender = 2 
  OR
@@ -70,12 +71,13 @@ WHERE department_id = 1
 ORDER BY age ASC;
 
 -- Q9
-SELECT AVG(age) AS average_age FROM people
+SELECT AVG(age) AS average_age 
+FROM people
 WHERE department_id = 2 AND gender = 2;
 
 -- Q10
 SELECT
-  people.name, people.department_id, content
+  people.name, departments.name, content
 FROM
   people
 INNER JOIN
@@ -87,7 +89,7 @@ INNER JOIN
 
 Q11
 SELECT 
- name, content
+ name
 FROM 
  people 
 LEFT JOIN
